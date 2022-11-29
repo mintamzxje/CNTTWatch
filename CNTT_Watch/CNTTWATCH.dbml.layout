@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.75" name="CNTTWATCH">
+  <DataContextMoniker Name="/CNTTWATCHDataContext" />
+  <nestedChildShapes>
+    <classShape Id="fb13e974-4ebe-4951-8da2-e2a6521357e9" absoluteBounds="6.75, 0.75, 2, 1.9631982421875003">
+      <DataClassMoniker Name="/CNTTWATCHDataContext/Account" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bd800566-17ae-40e3-9027-cb5b64aeeaa3" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ba57df7d-b9f2-46a0-b462-7983f28eea0b" absoluteBounds="0.75, 2.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/CNTTWATCHDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71c4c2e5-59de-4589-8697-311da430f85b" absoluteBounds="0.765, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="66f8daf0-0a8a-4a46-a3ea-c31b96651d43" absoluteBounds="0.75, 6.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/CNTTWATCHDataContext/OrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b291c1d-48d6-4c0b-97af-91f3140a2835" absoluteBounds="0.765, 7.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="535a381a-b2a6-4f8c-abc8-d0002dce4fd7" absoluteBounds="6.75, 3.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/CNTTWATCHDataContext/Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9f76235e-ae5c-40ed-92e7-3e88b2bd2580" absoluteBounds="6.765, 4.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5e3dfd54-9c68-4d12-993f-85ae578bf853" absoluteBounds="3.5, 1.125, 2, 4.8477197265625005">
+      <DataClassMoniker Name="/CNTTWATCHDataContext/Watch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b3205881-8713-4f89-a4a4-d47fb7c20fb3" absoluteBounds="3.515, 1.585, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 3.44314697265625); (3.5 : 3.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CNTTWATCHDataContext/Category/Category_Watch" />
+      <nodes>
+        <classShapeMoniker Id="ba57df7d-b9f2-46a0-b462-7983f28eea0b" />
+        <classShapeMoniker Id="5e3dfd54-9c68-4d12-993f-85ae578bf853" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
