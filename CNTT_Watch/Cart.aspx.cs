@@ -11,10 +11,10 @@ namespace CNTT_Watch
     public partial class Cart : System.Web.UI.Page
     {
         CNTTWATCHDataContext kn = new CNTTWATCHDataContext();
+        DataTable dt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Watch> list = (List<Watch>)Session["Cart"];
-            DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Name");
             dt.Columns.Add("HinhAnh");
@@ -22,17 +22,17 @@ namespace CNTT_Watch
             dt.Columns.Add("SoLuong");
             if (list != null)
             {
-                double s = 0;
+                float s = 0;
                 for (int i = 0; i < list.Count; i++)
                 {
                     DataRow workRow = dt.NewRow();
                     workRow[0] = list[i].ID;
                     workRow[1] = list[i].Name;
                     workRow[2] = list[i].HinhAnh;
-                    workRow[3] = Math.Round((double)((list[i].Gia - list[i].Gia * list[i].GiamGia / 100.0) / 100000), 0) * 100000;
+                    workRow[3] = ((float)((list[i].Gia - list[i].Gia * list[i].GiamGia / 100.0) / 100000) * 100000);
                     workRow[4] = list[i].SoLuong;
                     dt.Rows.Add(workRow);
-                    s = s + (Math.Round((double)((list[i].Gia - list[i].Gia * list[i].GiamGia / 100.0) / 100000), 0) * 100000) * list[i].SoLuong;
+                    s = (float)(s + ((float)((list[i].Gia - list[i].Gia * list[i].GiamGia / 100.0) / 100000) * 100000) * list[i].SoLuong);
                 }
                 lbTamTinh.Text = s.ToString("N0");
             }
@@ -77,11 +77,21 @@ namespace CNTT_Watch
                 for (int i = 0; i < list.Count; i++)
                 {
                     TextBox tb = (TextBox)dlCart.Items[i].FindControl("txtSoLuong");
-                    list[i].SoLuong = int.Parse(tb.Text);
-                    showMessage(list[i].ID+"");
+                    int soluong = int.Parse(tb.Text);
+                    if (soluong <= 0)
+                    {
+                        dlCart.DataSource = dt;
+                        dlCart.DataBind();
+                        Response.Write("<script>alert('Số lượng phải lớn hơn 0');</script>");
+                        return;
+                    }
+                    else
+                    {
+                        list[i].SoLuong = soluong;
+                    }
                 }
             }
-            //Response.Redirect(Request.RawUrl);
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void btRemove_Click(object sender, EventArgs e)
@@ -136,14 +146,22 @@ namespace CNTT_Watch
                     OrderDetail od = new OrderDetail();
                     od.OrderID = IDOrder;
                     od.WatchID = list[i].ID;
-                    od.Gia = (int)Math.Round((double)((list[i].Gia - list[i].Gia * list[i].GiamGia / 100.0) / 100000), 0) * 100000;
+                    od.Gia = ((float)((list[i].Gia - list[i].Gia * list[i].GiamGia / 100.0) / 100000) * 100000);
                     od.SoLuong = list[i].SoLuong;
                     kn.OrderDetails.InsertOnSubmit(od);
                     kn.SubmitChanges();
-                    showMessage("Đặt Hàng Thành Công");
+                    var q1 = (from w in kn.Watches
+                             where w.ID == list[i].ID
+                             select w);
+                    foreach (var watch in q1)
+                    {
+                        watch.SoLuong = watch.SoLuong - list[i].SoLuong;
+                        kn.SubmitChanges();
+                    }
                 }
                 Session["Cart"] = null;
                 Response.Redirect(Request.RawUrl);
+                showMessage("Đặt Hàng Thành Công");
             }
         }
         public void showMessage(string mess)

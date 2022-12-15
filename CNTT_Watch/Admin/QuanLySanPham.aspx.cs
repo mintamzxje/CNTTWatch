@@ -11,7 +11,11 @@ namespace CNTT_Watch.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["admin"] == null || (int)Session["admin"] == 0)
+            {
+                Response.Write("<script>alert('Bạn Không Có Quyền Truy Cập');</script>");
+                Response.Redirect("~/Login.aspx");
+            }
         }
     }
 }

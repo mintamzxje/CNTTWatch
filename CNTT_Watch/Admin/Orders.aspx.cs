@@ -13,6 +13,11 @@ namespace CNTT_Watch.Admin
         CNTTWATCHDataContext kn = new CNTTWATCHDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["admin"] == null || (int)Session["admin"] == 0)
+            {
+                Response.Write("<script>alert('Bạn Không Có Quyền Truy Cập');</script>");
+                Response.Redirect("~/Login.aspx");
+            }
             var q = from Order in kn.Orders
                     select Order;
             gvOrders.DataSource = q;
@@ -44,6 +49,27 @@ namespace CNTT_Watch.Admin
                      select OrderDetail;
             foreach (var OrderDetail in q1)
             {
+                bool state = false;
+                var q4 = from Order in kn.Orders
+                         where Order.ID == int.Parse(gvOrders.Rows[e.RowIndex].Cells[0].Text)
+                         select Order;
+                foreach (var Order in q4)
+                {
+                    state = Order.State;
+                }
+                kn.SubmitChanges();
+                if (state == false)
+                {
+                    var q3 = (from w in kn.Watches
+                              where w.ID == OrderDetail.WatchID
+                              select w);
+                    foreach (var watch in q3)
+                    {
+                        watch.SoLuong = watch.SoLuong + OrderDetail.SoLuong;
+                        kn.SubmitChanges();
+                    }
+                    kn.OrderDetails.DeleteOnSubmit(OrderDetail);
+                }    
                 kn.OrderDetails.DeleteOnSubmit(OrderDetail);
             }
             kn.SubmitChanges();

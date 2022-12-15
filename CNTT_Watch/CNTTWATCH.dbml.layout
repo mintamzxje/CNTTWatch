@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.75" name="CNTTWATCH">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.5" name="CNTTWATCH">
   <DataContextMoniker Name="/CNTTWATCHDataContext" />
   <nestedChildShapes>
     <classShape Id="fb13e974-4ebe-4951-8da2-e2a6521357e9" absoluteBounds="6.75, 0.75, 2, 1.9631982421875003">
@@ -14,10 +14,10 @@
         <elementListCompartment Id="71c4c2e5-59de-4589-8697-311da430f85b" absoluteBounds="0.765, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="66f8daf0-0a8a-4a46-a3ea-c31b96651d43" absoluteBounds="0.75, 6.75, 2, 1.7708968098958327">
+    <classShape Id="66f8daf0-0a8a-4a46-a3ea-c31b96651d43" absoluteBounds="9, 4, 2, 1.7708968098958327">
       <DataClassMoniker Name="/CNTTWATCHDataContext/OrderDetail" />
       <nestedChildShapes>
-        <elementListCompartment Id="7b291c1d-48d6-4c0b-97af-91f3140a2835" absoluteBounds="0.765, 7.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7b291c1d-48d6-4c0b-97af-91f3140a2835" absoluteBounds="9.015, 4.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="535a381a-b2a6-4f8c-abc8-d0002dce4fd7" absoluteBounds="6.75, 3.75, 2, 2.1554996744791666">
@@ -32,7 +32,7 @@
         <elementListCompartment Id="b3205881-8713-4f89-a4a4-d47fb7c20fb3" absoluteBounds="3.515, 1.585, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 3.44314697265625); (3.5 : 3.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 3.44314697265625); (3.5 : 3.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/CNTTWATCHDataContext/Category/Category_Watch" />
       <nodes>
         <classShapeMoniker Id="ba57df7d-b9f2-46a0-b462-7983f28eea0b" />

@@ -12,6 +12,11 @@ namespace CNTT_Watch.Admin
         CNTTWATCHDataContext kn = new CNTTWATCHDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["admin"] == null || (int)Session["admin"] == 0)
+            {
+                Response.Write("<script>alert('Bạn Không Có Quyền Truy Cập');</script>");
+                Response.Redirect("~/Login.aspx");
+            }
             var q = from DetailOrder in kn.OrderDetails
                     join Watch in kn.Watches on DetailOrder.WatchID equals Watch.ID
                     where DetailOrder.OrderID == int.Parse(Request.QueryString[0])

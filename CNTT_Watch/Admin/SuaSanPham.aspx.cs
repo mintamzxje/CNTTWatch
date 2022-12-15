@@ -14,6 +14,11 @@ namespace CNTT_Watch.Admin
         public int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["admin"] == null || (int)Session["admin"] == 0)
+            {
+                Response.Write("<script>alert('Bạn Không Có Quyền Truy Cập');</script>");
+                Response.Redirect("~/Login.aspx");
+            }
             id = int.Parse(Request.QueryString[0].ToString());
             if (!IsPostBack)
             {
@@ -83,7 +88,15 @@ namespace CNTT_Watch.Admin
                 watch.ChatLieuKinh = txtChatLieuKinh.Text;
                 watch.ChucNang = txtChucNang.Text;
                 watch.ChongNuoc = txtDoChiuNuoc.Text;
-                watch.XuatXu = "NULL";
+                Category category = new Category();
+                var q1 = from ct in kn.Categories
+                         where ct.ID == int.Parse(listThuongHieu.SelectedValue)
+                         select ct;
+                foreach (var ct in q1)
+                {
+                    category.QuocGia = ct.QuocGia;
+                }
+                watch.XuatXu = category.QuocGia;
                 watch.Mota = txtMoTa.Value;
                 watch.type = int.Parse(listType.SelectedValue).ToString();
                 if (fileUpload.HasFile)

@@ -25,9 +25,10 @@ namespace CNTT_Watch
                 category.NameCategory = ct.NameCategory;
             }    
             HinhAnh = w.HinhAnh;
+            lblsoluong.Text = w.SoLuong.ToString();
             lbName.Text = w.Name;
             lbGia.Text = w.Gia.ToString("N0");
-            lbGia2.Text = (Math.Round((double)((w.Gia - w.Gia * w.GiamGia / 100.0) / 100000), 0) * 100000).ToString("N0");
+            lbGia2.Text = ((float)((w.Gia - w.Gia * w.GiamGia / 100.0) / 100000) * 100000).ToString("N0");
             lbBaoHanh.Text = w.BaoHanh;
             lbThuongHieu.Text = category.NameCategory;
             lbXuatXu.Text = w.XuatXu;
@@ -43,6 +44,16 @@ namespace CNTT_Watch
             lbGiamGia.Text = "-" + w.GiamGia + "%";
             btSua.Visible = false;
             btXoa.Visible = false;
+            if(w.SoLuong == 0)
+            {
+                btndathang.Visible = false;
+                lblhethang.Text = "Hết Hàng";
+            }    
+            else if(w.SoLuong != 0)
+            {
+                btndathang.Visible = true;
+                lblhethang.Text = "";
+            }    
         }
         public Watch ShowDetailWatch(int ID)
         {
@@ -53,6 +64,7 @@ namespace CNTT_Watch
             foreach (var w in q)
             {
                 watch.HinhAnh = w.HinhAnh;
+                watch.SoLuong = w.SoLuong;
                 watch.Name = w.Name;
                 watch.Gia = w.Gia;
                 watch.BaoHanh = w.BaoHanh;

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="CNTTWatchConnectionString-Web.config Connection String" description="CNTTWatchConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=DESKTOP-DVSNM19\SQLEXPRESS;Initial Catalog=CNTTWatch;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\IT\\HK1_N4\\Projects\\CNTT-Watch\\CNTT_Watch\\CNTT_Watch\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CNTTWatchConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

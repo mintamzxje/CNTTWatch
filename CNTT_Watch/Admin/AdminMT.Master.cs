@@ -11,7 +11,10 @@ namespace CNTT_Watch.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["username"] != null)
+            {
+                HyperLink4.Text = "XIN CHÀO: " + Session["username"];
+            }
         }
     }
 }

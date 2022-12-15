@@ -30,7 +30,7 @@ namespace CNTT_Watch
         }
         public bool CheckNull()
         {
-            if (txtUsername.Text.Equals(""))
+            if (txtUserName.Text.Equals(""))
             {
                 showMessage("Chưa nhập UserName");
                 return true;
@@ -51,6 +51,16 @@ namespace CNTT_Watch
                 showMessage("Chưa nhập PassWord");
                 return true;
             }
+            if (txtFirstName.Text.Equals(""))
+            {
+                showMessage("Chưa nhập FirstName");
+                return true;
+            }
+            if (txtLastName.Text.Equals(""))
+            {
+                showMessage("Chưa nhập LastName");
+                return true;
+            }
             return false;
         }
         public void showMessage(string mess)
@@ -60,9 +70,9 @@ namespace CNTT_Watch
         }
         protected void btnDangky_Click(object sender, EventArgs e)
         {
-            if (Check(txtUsername.Text))
+            if (Check(txtUserName.Text))
             {
-                showMessage("Tên đăng nhập " + txtUsername.Text + " đã tồn tại");
+                showMessage("Tên đăng nhập " + txtUserName.Text + " đã tồn tại");
             }
             else
             {
@@ -72,16 +82,19 @@ namespace CNTT_Watch
                 }  
                 else
                 {
-                    Account ac = new Account();
-                    ac.UserName = txtUsername.Text;
-                    ac.Email = txtEmail.Text;
-                    ac.Type = "User";
                     if (txtPassword1.Text.Equals(txtPassword2.Text))
                     {
+                        Account ac = new Account();
+                        ac.UserName = txtUserName.Text;
+                        ac.Email = txtEmail.Text;
+                        ac.FirstName = txtFirstName.Text;
+                        ac.LastName = txtLastName.Text;
+                        ac.Type = "User";
                         ac.PassWord = txtPassword1.Text;
                         kn.Accounts.InsertOnSubmit(ac);
                         kn.SubmitChanges();
-                        showMessage("Đã đăng ký thành công tài khoản: " + txtUsername.Text);
+                        showMessage("Đã đăng ký thành công tài khoản: " + txtUserName.Text);
+                        Response.Redirect("Login.aspx");
                     }
                     else
                     {

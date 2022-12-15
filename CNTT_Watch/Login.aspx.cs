@@ -1,5 +1,4 @@
-﻿using CNTT_Watch.Admin;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -39,7 +38,6 @@ namespace CNTT_Watch
         }
         protected void btnDangNhap_Click(object sender, EventArgs e)
         {
-            Session["username"] = txtTenDN.Text;
             if (kiemtra(txtTenDN.Text, txtPassword.Text))
             {
                 if (txtPassword.Text == "nguoidungmoi")
@@ -50,10 +48,13 @@ namespace CNTT_Watch
                 {
                     if (phanquyen(txtTenDN.Text))
                     {
-                        Response.Redirect("Admin/QuanLyTaiKhoan.aspx");
+                        Session["admin"] = 1;
+                        Session["username"] = txtTenDN.Text;
+                        Response.Redirect("~/Admin/QuanLyTaiKhoan.aspx");
                     }
                     else
                     {
+                        Session["admin"] = 0;
                         Response.Redirect("TrangChu.aspx");
                     }
                 }

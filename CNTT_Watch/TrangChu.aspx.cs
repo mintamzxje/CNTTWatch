@@ -23,6 +23,7 @@ namespace CNTT_Watch
         public void ShowHotSale()
         {
             var q = (from w in kn.Watches
+                     where w.GiamGia >= 40
                      select new
                      {
                          Gia2 = w.Gia - w.Gia * w.GiamGia / 100,

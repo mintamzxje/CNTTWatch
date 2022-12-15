@@ -69,6 +69,15 @@ namespace CNTT_Watch
         protected global::System.Web.UI.WebControls.Label lbGia2;
 
         /// <summary>
+        /// lblhethang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblhethang;
+
+        /// <summary>
         /// btndathang control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace CNTT_Watch
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// lblsoluong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblsoluong;
 
         /// <summary>
         /// lbBaoHanh control.
